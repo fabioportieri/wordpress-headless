@@ -6,11 +6,17 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [RouterOutlet],
   template: `
-    <h1>Welcome to {{title}}!</h1>
+    <h2>Welcome to {{ title }}</h2>
 
     <router-outlet />
   `,
-  styles: [],
+  styles: [
+    `
+      h2 {
+        text-align: center;
+      }
+    `,
+  ],
 })
 export class AppComponent {
   title = 'wordpress-headless';
