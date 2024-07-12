@@ -1,3 +1,13 @@
+# Link utili
+
+- repository github (doc): `https://github.com/WPGov/amministrazione-trasparente`
+
+- doc rest:
+
+`https://learn.wordpress.org/tutorial/interacting-with-the-wordpress-rest-api/`
+`https://developer.wordpress.org/rest-api/reference/posts/`
+`https://rudrastyh.com/wordpress/rest-api-create-post.html`
+
 ## TODO
 
 ### STEP 1
@@ -21,8 +31,13 @@
 
 ## CRITICITA'
 
-1. recuperare lista tipologie da endpoint (per creare nuovo contenuto)
+1. ~~recuperare lista tipologie da endpoint (per creare nuovo contenuto)~~
 
 2. pubblicare un nuovo contenuto su tipologia di amm. trasparente
 
-3. recuperare albero gruppi / tipologie / contenuti da endpoint (per riprodurre immagine 2 da webapp client)
+3. recuperare albero gruppi / ~~tipologie~~ / contenuti da endpoint (per riprodurre immagine 2 da webapp client)
+
+### appunti
+
+curl -H "Authorization: Bearer YOUR_TOKEN" "http://example.com/wp-json/wp/v2/posts?post_type=book"
+curl "http://example.com/wp-json/wp/v2/posts?post_type=book&per_page=20&page=2"

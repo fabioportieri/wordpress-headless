@@ -12,7 +12,13 @@ export class WordpressApiService {
   constructor(private http: HttpClient) {}
 
   getPosts() {
-    const url = `${this.siteUrl}/wp-json/wp/v2/posts`;
+    const url = `${this.siteUrl}/wp-json/wp/v2/amm-trasparente`;
+    console.log(url);
+    return this.http.get(url).pipe(catchError(this.errorHandler));
+  }
+
+  getTipologie() {
+    const url = `${this.siteUrl}/wp-json/wp/v2/tipologie?per_page=100&page=1`;
     console.log(url);
     return this.http.get(url).pipe(catchError(this.errorHandler));
   }
