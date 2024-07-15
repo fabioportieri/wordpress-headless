@@ -14,8 +14,9 @@ import {
   TipologieDropdownComponent,
 } from '../../shared/tipologie-dropdown/tipologie-dropdown.component';
 import { WordpressApiService } from '../../shared/wordpress-api.service';
+
 @Component({
-  selector: 'awp-main',
+  selector: 'awp-search-posts-page',
   standalone: true,
   imports: [
     CommonModule,
@@ -54,7 +55,7 @@ import { WordpressApiService } from '../../shared/wordpress-api.service';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MainComponent implements OnInit {
+export class SearchPostsPageComponent implements OnInit {
   tipologie: Tipologie[] = [];
 
   constructor(
