@@ -10,10 +10,17 @@ const setEnv = () => {
     path: 'src/environments/.env',
   });
 
+  const wordpressPassword = process.env.NG_WORDPRESS_SITE_PASSWORD
+    ? process.env.NG_WORDPRESS_SITE_PASSWORD.trim()
+    : null;
+  if (!wordpressPassword)
+    console.error(
+      "Password for wordpress website not set as environment variable. Do a 'set WORDPRESS_SITE_PASSWORD=<password>' beforehand."
+    );
   // `environment.ts` file structure
   const envConfigFile = `export const environment = {
     wordpressSiteUrl: '${process.env.WORDPRESS_SITE_URL}',
-    wordpressSitePassword: '${process.env.WORDPRESS_SITE_PASSWORD}',
+    wordpressSitePassword: ${wordpressPassword},
     appVersion: '${appVersion}',
     production: '${process.env.IS_PRODUCTION}',
   };
