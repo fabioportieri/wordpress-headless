@@ -61,8 +61,7 @@ TODO serve configurare il cors
 2. access ui in https://localhost:8099 and install and activate following plugins:
    - wp-attachment
    - amministrazione trasparente
-   - enable-cors
-   - WordPress REST API Authentication
+     ~~- enable-cors~~
 3. go to "settings" -> "permalinks" -> set "struttura dei permalink" with the option "Data e nome"
 4. go to https://localhost:8099/wp-json to access the service discovery json
 
