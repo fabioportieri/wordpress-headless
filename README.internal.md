@@ -51,4 +51,24 @@ http://192.168.1.157/demo.dmi
 rest api discovery: GET da browser su : http://192.168.1.157/demo.dmi/wp-json/
 contiene anche doc in json schema delle api
 
+http://localhost:8095/wp-admin
+
 TODO serve configurare il cors
+
+# Startup & Configurazione wordpress
+
+1. cd docker; docker compose up -d
+2. access ui in https://localhost:8099 and install and activate following plugins:
+   - wp-attachment
+   - amministrazione trasparente
+   - enable-cors
+   - WordPress REST API Authentication
+3. go to "settings" -> "permalinks" -> set "struttura dei permalink" with the option "Data e nome"
+4. go to https://localhost:8099/wp-json to access the service discovery json
+
+# troubleshooting
+
+- cors errors even after adding enable-cors plugin: clean browser cache, test with firefox or chrome incognito, should work
+- how to generate self signed trusted certificate for development:
+  mkcert -install # installa una CA locale sulla macchina
+  mkcert localhost # genera certificato e chiave .pem

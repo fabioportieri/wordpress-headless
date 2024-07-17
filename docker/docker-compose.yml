@@ -22,22 +22,44 @@ services:
     networks:
       - wordpress_net
   wordpress:
-    # image: wordpress:6.5.5-php8.2-apache
-    build: .
+    image: wordpress:6.5.5-php8.2-apache
+    # build: .
+    container_name: wordpress
+    hostname: wordpress
     volumes:
       - wp_data:/var/www/html:rw
+      - ./apache-wordpress/certs:/etc/ssl/certs:ro
+      - ./apache-wordpress/default-ssl.conf:/etc/apache2/sites-available/default-ssl.conf:ro
+      - ./apache-wordpress/docker-entrypoint.sh:/usr/local/bin/docker-entrypoint.sh:ro
+      - ./apache-wordpress/.htaccess:/usr/src/wordpress/.htaccess
     ports:
       - 8095:80
+      - 8099:443
     restart: always
     environment:
       - WORDPRESS_DB_HOST=db
       - WORDPRESS_DB_USER=wordpress
       - WORDPRESS_DB_PASSWORD=wordpress
       - WORDPRESS_DB_NAME=wordpress
-      # - WORDPRESS_CONFIG_EXTRA= |
-      # define('FS_METHOD', 'direct');
+      - WORDPRESS_CONFIG_EXTRA=define( 'FORCE_SSL_ADMIN', true );define('WP_HOME', 'https://localhost:8099/');define('WP_SITEURL', 'https://localhost:8099/');
     networks:
-      - wordpress_net
+      wordpress_net:
+        aliases:
+          - wordpress
+
+  # nginx:
+  #   restart: always
+  #   image: nginx:alpine3.19-perl
+  #   ports:
+  #     - 8099:80
+  #     - 8098:443
+  #   volumes:
+  #     - ./nginx/default_minimal.conf:/etc/nginx/conf.d/default.conf
+  #     - ./nginx/ssl:/etc/nginx/ssl
+  #   depends_on:
+  #     - wordpress
+  #   networks:
+  #     - wordpress_net
 volumes:
   db_data:
   wp_data:

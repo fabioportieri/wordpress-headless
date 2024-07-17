@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs';
+import { environment } from '../../environments/environment';
 import { errorHandler } from './misc-utils';
-
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private siteUrl = 'http://192.168.1.157/demo.dmi';
+  private siteUrl = environment.wordpressSiteUrl; // 'http://192.168.1.157/demo.dmi';
 
   constructor(
     private http: HttpClient // private storage: SessionStorageService
