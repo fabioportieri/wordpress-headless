@@ -20,7 +20,7 @@ const setEnv = () => {
   // `environment.ts` file structure
   const envConfigFile = `export const environment = {
     wordpressSiteUrl: '${process.env.WORDPRESS_SITE_URL}',
-    wordpressSitePassword: ${wordpressPassword},
+    wordpressSitePassword: '${wordpressPassword}',
     appVersion: '${appVersion}',
     production: '${process.env.IS_PRODUCTION}',
   };
