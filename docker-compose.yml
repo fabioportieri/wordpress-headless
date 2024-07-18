@@ -48,7 +48,12 @@ services:
           - wordpress
   web:
     restart: always
-    build: "."
+    build:
+      context: .
+      args:
+        WORDPRESS_SITE_URL: ${WORDPRESS_SITE_URL}
+        WORDPRESS_SITE_PASSWORD: ${WORDPRESS_SITE_PASSWORD}
+        IS_PRODUCTION: ${IS_PRODUCTION}
     ports:
       - 4200:80
       - 4300:443
@@ -59,19 +64,7 @@ services:
       - angular-build:/usr/share/nginx/html
     networks:
       - wordpress_net
-  # nginx:
-  #   restart: always
-  #   image: nginx:alpine3.19-perl
-  #   ports:
-  #     - 4200:80
-  #     - 4300:443
-  #   volumes:
-  #     - ./nginx/default_angular.conf:/etc/nginx/conf.d/default.conf
-  #     - ./nginx/ssl:/etc/nginx/ssl
-  #   depends_on:
-  #     - wordpress
-  #   networks:
-  #     - wordpress_net
+
 volumes:
   db_data:
   wp_data:

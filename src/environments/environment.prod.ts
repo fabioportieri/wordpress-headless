@@ -1,6 +1,7 @@
 export const environment = {
-  appVersion: '',
-  production: true,
-  wordpressSiteUrl: 'https://localhost:8099',
-  wordpressSitePassword: '',
-};
+    wordpressSiteUrl: 'https://wordpress:8099',
+    wordpressSitePassword: 'ZmFiaW9wOmEwSUQgMW80QSBsekwzIEpaSTcgaGd4SyBYRlVq',
+    appVersion: '0.0.1',
+    production: 'true',
+  };
+  

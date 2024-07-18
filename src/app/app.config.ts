@@ -9,6 +9,7 @@ import {
   withSessionStorage,
 } from 'ngx-webstorage';
 import { routes } from './app.routes';
+import { authBasicInterceptor } from './core/auth-basic.interceptor';
 import { authInterceptor } from './core/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
@@ -17,7 +18,9 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimationsAsync(),
     // provideHttpClient(),
-    provideHttpClient(withInterceptors([authInterceptor])),
+    provideHttpClient(
+      withInterceptors([authInterceptor, authBasicInterceptor])
+    ),
     provideNgxWebstorage(
       withNgxWebstorageConfig({ separator: ':', caseSensitive: true }),
       withLocalStorage(),

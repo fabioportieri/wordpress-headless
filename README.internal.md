@@ -53,17 +53,29 @@ contiene anche doc in json schema delle api
 
 http://localhost:8095/wp-admin
 
-TODO serve configurare il cors
+# Docker
 
-# Startup & Configurazione wordpress
+## Init wordpress stack
 
-1. cd docker; docker compose up -d
+1. run startdocker.bat, ignore errors related to env variables not set
 2. access ui in https://localhost:8099 and install and activate following plugins:
    - wp-attachment
    - amministrazione trasparente
      ~~- enable-cors~~
 3. go to "settings" -> "permalinks" -> set "struttura dei permalink" with the option "Data e nome"
-4. go to https://localhost:8099/wp-json to access the service discovery json
+4. go to https://localhost:8099/wp-admin/profile.php and create new Application Password
+
+5. set environment variable on your host machine:
+   `set WORDPRESS_SITE_PASSWORD=base64 encoded of "fabiop:app_password"`
+
+## Run project
+
+after everything is initiliazed, you can run the stack as usual with `docker compose down` / `docker compose up -d`
+
+## Run project for development
+
+for development there is a minimal version of the stack to run: `docker compose minimal.yml` with the backend
+while the frontend will be started with `npm run start` as usual for hot reloading
 
 # troubleshooting
 
@@ -71,3 +83,7 @@ TODO serve configurare il cors
 - how to generate self signed trusted certificate for development:
   mkcert -install # installa una CA locale sulla macchina
   mkcert localhost # genera certificato e chiave .pem
+
+# useful links:
+
+https://localhost:8099/wp-json to access the service discovery json
