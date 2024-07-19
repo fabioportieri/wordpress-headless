@@ -24,17 +24,10 @@ import { WordpressApiService } from '../../shared/wordpress-api.service';
         Publish
       </button>
     </mat-toolbar>
-    <div class="container"><awp-ckeditor></awp-ckeditor></div>
 
-    <button
-      class="button"
-      (click)="publish()"
-      mat-flat-button
-      class=""
-      aria-label="publish"
-    >
-      publish
-    </button>
+    <div class="container">
+      <awp-ckeditor></awp-ckeditor>
+    </div>
   `,
   styles: [
     `

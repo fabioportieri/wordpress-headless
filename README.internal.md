@@ -20,6 +20,10 @@
 
 ![alt text](image.png)
 
+    mock:
+
+![alt text](image-2.png)
+
 ### STEP 2
 
     possibilita' di pubblicare su wordpress da AlboPretorio
